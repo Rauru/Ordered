@@ -2,50 +2,65 @@
 #include <iostream>
 using namespace std;
 
-bool its_odd(int n)
+bool its_even(int n)
 {
     if ( n % 2 == 0)
-        return false;
-    else
         return true;
+    else
+        return false;
 }
 
 
 
-bool numberExists(vector<int> ordered_numbers, int x)
-{
+bool numberExists(vector<int> ordered_numbers, int x){
+    int lenght = ordered_numbers.size();
+    int lenghto = ordered_numbers.size()+1;
+    bool exist = false;
 
-    if(its_odd(ordered_numbers.size()))
-    {
-        //ordered_numbers
-    }
-    //std::vector<int> v2(ordered_numbers.begin(), ordered_numbers.begin() + ordered_numbers.size()/2),
-      //         v3(ordered_numbers.begin() + ordered_numbers.size()/2, ordered_numbers.end());
+    if(its_even(x)){
 
-
-    bool exists = false;
-    for(int i = 0; i < ordered_numbers.size();i++)
-    {
-
-        if(ordered_numbers[i] < x)
-            {
-                if(i + 4 <= ordered_numbers.size())
-                    {
-                        i + 4;
+        if(x==ordered_numbers[lenght/2]){
+            exist= true;
+        }
+        if(x < ordered_numbers[lenght/2]){
+            for(int i =0; i < (lenght/2);i++ ){
+                    if(ordered_numbers[i] == x){
+                    exist = true;
                     }
-            }else if(ordered_numbers[i] > x)
-            {
-                if(i -3 >= 0)
-                    {
-                        i -3;
+
+                }
+            }else{
+            for(int i =(lenght/2); i < lenght ;i++ ){
+                if(ordered_numbers[i] == x){
+                    exist = true;
                     }
-            }
-        if(ordered_numbers[i] == x)
-            {
-                exists = true;
-            }
+
+                }
+
+        }
+    }else{
+        if(x==ordered_numbers[lenghto/2]){
+            exist= true;
+        }
+        if(x<ordered_numbers[(lenghto)/2]){
+            for(int i =0; i < ((lenghto)/2);i++ ){
+                if(ordered_numbers[i] == x){
+                    exist = true;
+                    }
+                }
+
+        }else{
+            for(int i =((lenghto)/2); i < lenght ;i++ ){
+                if(ordered_numbers[i] == x){
+                    exist = true;
+                    }
+                }
+        }
     }
-    return exists;
+
+
+    return exist;
+
 }
 
 int main ()
